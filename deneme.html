@@ -1,0 +1,85 @@
+
+<html>
+<head>
+
+<style type="text/css">
+      table {
+    margin: 18px 0;
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+table th,
+table td {
+    text-align: left;
+    padding: 6px;
+    
+}
+table,
+th,
+td {
+    border: 1px solid #000;
+     }
+
+     
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+
+    var word = "Create New Job"; 
+  document.write("<strong>" + word + "</strong>" ); 
+
+      $(document).ready(function() { 
+    $(".add").click(function() {
+        var jobname = $("#jobname").val(); 
+        var pri = $("#jobs").val();
+        var ligne = "<tr><td><input type='checkbox' name='select'></td><td>" + jobname + "</td><td>" + pri + "</td></tr>";
+        $("table.test").append(ligne);
+    });
+    $(".delete").click(function() {
+         $("table.test").find('input[name="select"]').each(function() {
+            if ($(this).is(":checked")) {
+                 
+                $(this).parents("table.test tr").remove();
+                
+                var jobname = document.getElementById('jobname').value
+                var pri = document.getElementById('jobs').value  
+                
+                
+            }
+        });
+          
+    });
+
+    
+});
+      
+ document.getElementById('list').appendChild(table)
+</script>
+</head>
+<body>
+    <input type="text" id="jobname" placeholder="Job Name">
+    <label for="jobs">Job Priority:</label>
+<select class = "form-control" id="jobs" name="jobs">
+  <option id="urgent">Urgent</option> <label> Urgent </label>  
+  <option id="regular">Regular</option> <label>Regular</label>
+  <option id="trivial">Trivial</option><label>Trivial</label>
+    <input type="button" class="add" value="Create">
+    <table class="test">
+            <tr>
+                <th>Action</th>
+                <th>Job Name</th>
+                <th>Job Priority</th>
+            </tr>
+            
+
+    </table>
+    
+    <button type="button" class="delete">Delete</button>
+    
+
+</body> 
+</html>
+
+
